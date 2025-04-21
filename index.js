@@ -1,13 +1,7 @@
-const list = [
-  { name: 'Mléko', amount: '1 litr', bought: true },
-  { name: 'Rohlíky', amount: '10 ks', bought: false },
-  { name: 'Pivo Krušovice', amount: '2 ks', bought: false },
-  { name: 'Sýr Eidem', amount: '200 g', bought: true },
-  { name: 'Paštika', amount: '1 ks', bought: false },
-  { name: 'Máslo', amount: '250 g', bought: true },
-];
+import { list, addItem } from './shoplist.js'; //vezmi to z adresáře, kde to je
+import { renderList } from './render.js';
 
-const renderList = () => {
+/*const renderList = () => {
   const shoplistElement = document.querySelector('.shoplist');
   shoplistElement.innerHTML = '';
   list.forEach((item) => {
@@ -42,7 +36,7 @@ const renderList = () => {
       renderList();
     });
   });
-};
+};*/
 
 const addBtn = document.querySelector('.btn-add');
 addBtn.addEventListener('click', (e) => {
@@ -50,14 +44,18 @@ addBtn.addEventListener('click', (e) => {
 
   const nameInput = document.querySelector('#input-name');
   const amountInput = document.querySelector('#input-amount');
-  const newItem = {
-    name: nameInput.value,
-    amount: amountInput.value,
-  };
-  list.push(newItem);
+  addItem(nameInput.value, amountInput.value);
   renderList();
 
-  nameInput.value = '';
+
+    /*name: nameInput.value,
+    amount: amountInput.value,
+    bought: false,
+  };
+  list.push(newItem);
+  renderList();*/
+
+  nameInput.value = '';  //vymažu stará políčka,abych tam mohla dát nové informace
   amountInput.value = '';
 });
 
